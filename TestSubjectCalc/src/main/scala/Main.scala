@@ -20,10 +20,10 @@ object Main {
   }
 
   def safeStrToInt(str: String) = scala.util.Try(str.toInt).toOption
-  def filterStrToInt(strlist: List[String]): Boolean = {
+  def filterStrToInt(strlist: Seq[String]): Boolean = {
     strlist match {
       case _ :: tail => {
-        tail.map(safeStrToInt(_)).forall(_ match {case Some(_) => true; case None => false})
+        tail.map(safeStrToInt).forall(_ match {case Some(_) => true; case None => false})
       }
       case _ => false
     }
